@@ -1,0 +1,58 @@
+<script>
+//找出数组中重复的数字、重复数字个数、以及去重
+//var arr = ['土豆','土豆','茄子','土豆','茄子','土豆','紫红色'];
+
+
+
+//for循环遍历形式
+var arr=[1,1,3,4,5,3,4,5,5,1,3,7];
+
+function repeat(arr){
+    var norepeat = [];
+    var repeat = [];
+    var once=[]
+    for(var i=0; i<arr.length; i++){
+      if(norepeat.indexOf(arr[i]) == -1){
+        norepeat.push(arr[i]);
+      }     
+      else
+      {
+      if(repeat.indexOf(arr[i]) == -1){
+        repeat.push(arr[i]);
+      }  
+      }
+    }
+    var obj = {}
+    arr.forEach((v,k)=>{
+      if(obj[v]){
+        obj[v]++;
+      }else{
+        obj[v] = 1;
+      }
+    });
+    console.log(norepeat)  //数组去重后的数组
+    console.log(repeat) //输出重复的数字
+    console.log(obj)  //该对象返回重复的数字以及个数
+    
+}
+repeat(arr);
+
+//利用set去重
+var arr = [11, 23, 26, 23, 11, 9]
+const norepeat = arr => [...new Set(arr)]
+console.log(norepeat(arr));
+
+//找出非重复数字
+var  arr = [11, 23, 26, 23, 11, 9]
+const once = arr => arr.filter(i => arr.indexOf(i) === arr.lastIndexOf(i))
+console.log(once(arr));
+
+//保留数组中重复数字
+var  arr = [11, 23, 26, 23, 11, 9]
+var  repeat = arr => arr.filter(i => arr.indexOf(i) !== arr.lastIndexOf(i))
+
+console.log(repeat(arr));
+
+
+
+</script>
